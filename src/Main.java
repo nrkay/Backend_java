@@ -10,69 +10,75 @@ public class Main {
         ArrayList<Integer> hargaList = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
+        String menu = "";
+        int harga = 0;
         int totalHarga = 0;
 
         // Menampilkan daftar menu
-        System.out.println("Daftar Menu:");
-        System.out.println("1. Nasi Goreng | Rp 15.000");
-        System.out.println("2. Mie Ayam | Rp 15.000");
-        System.out.println("3. Nasi Ayam | Rp 15.000");
-        System.out.println("4. Es Teh Manis | Rp 15.000");
-        System.out.println("0. Keluar");
-        System.out.println("99. Selesai Pemesanan");
+
+
 
         while (true) {
-            System.out.print("Masukkan angka menu: ");
+            listMenu();
+            System.out.print("=> ");
             int pilihanMenu = scanner.nextInt();
             scanner.nextLine(); // Membersihkan buffer
 
             if (pilihanMenu == 0) {
                 break;
             } else if (pilihanMenu == 99) {
-                break;
-            } else if (pilihanMenu < 1 || pilihanMenu > 4) {
+                System.out.println("Mengklik 99");
+            } else if (pilihanMenu < 1 || pilihanMenu > 5) {
                 System.out.println("Menu tidak valid.");
                 continue;
             }
 
-            String menu = "";
-            int harga = 0;
+            // menampilkan pesanan yg dipilih
+            System.out.println("================================");
+            System.out.println("PESANAN ANDA");
+            System.out.println("================================");
 
             switch (pilihanMenu) {
-                case 1:
+                case 1 :
+                    System.out.println("Nasi Goreng | 15.000");
                     menu = "Nasi Goreng";
                     harga = 15000;
                     break;
-                case 2:
-                    menu = "Mie Ayam";
-                    harga = 15000;
+                case 2 :
+                    System.out.println("Mie Goreng | 13.000");
+                    menu = "Mie Goreng";
+                    harga = 13000;
                     break;
-                case 3:
-                    menu = "Nasi Ayam";
-                    harga = 15000;
+                case 3 :
+                    System.out.println("Nasi + Ayam  | 18.000");
+                    menu = "Nasi + Ayam";
+                    harga = 18000;
                     break;
-                case 4:
+                case 4 :
+                    System.out.println("Es Teh Manis | 3.000");
                     menu = "Es Teh Manis";
-                    harga = 15000;
+                    harga = 3000;
+                    break;
+                case 5 :
+                    System.out.println("Es Jeruk | 5.000");
+                    menu = "Es Jeruk";
+                    harga = 5000;
                     break;
             }
 
-            System.out.print("Masukkan jumlah porsi: ");
+            // input banyaknya pesanan
+            System.out.print("qty=> ");
             int jumlahPorsi = scanner.nextInt();
-            scanner.nextLine(); // Membersihkan buffer
+            scanner.nextLine();
+            totalHarga = jumlahPorsi * harga;
 
-            int totalHargaMenu = harga * jumlahPorsi;
-
+            // memasukkan value yang ada di variabel menu, jumlahPorsi kedalam list untuk ditampilkan
             menuList.add(menu);
+            System.out.println("menuList:" + menuList);
             jumlahList.add(jumlahPorsi);
-            hargaList.add(totalHargaMenu);
-
-            System.out.print("Apakah Anda ingin menambah pesanan lagi? (ya/tidak): ");
-            String tambahPesanan = scanner.nextLine();
-
-            if (tambahPesanan.equalsIgnoreCase("tidak")) {
-                break;
-            }
+            System.out.println("jumlah list: " + jumlahList);
+            hargaList.add(totalHarga);
+            System.out.println("totalHarga :" + hargaList);
         }
 
         // Menampilkan pesanan
@@ -87,20 +93,16 @@ public class Main {
         scanner.close();
     }
 
-//    private static void listMenu() {
-//        System.out.println("====================");
-//        System.out.println("Selamat Datang Binar Food");
-//        System.out.println("====================\n");
-//        System.out.println("1. Nasi Goreng | Rp 15.000");
-//        System.out.println("2. Mie Ayam | Rp 15.000");
-//        System.out.println("3. Nasi + Ayam | Rp 15.000");
-//        System.out.println("4. Es Teh Manis | Rp 15.000");
-//        System.out.println("5. Es Jeruk | Rp 15.000");
-//        System.out.println("99. Pesan dan Bayar");
-//        System.out.println("0. Keluar Aplikasi");
-//
-//
-//
-//
-//    }
+    private static void listMenu() {
+        System.out.println("====================");
+        System.out.println("Selamat Datang Binar Food");
+        System.out.println("====================\n");
+        System.out.println("1. Nasi Goreng | Rp 15.000");
+        System.out.println("2. Mie Ayam | Rp 13.000");
+        System.out.println("3. Nasi + Ayam | Rp 18.000");
+        System.out.println("4. Es Teh Manis | Rp 3.000");
+        System.out.println("5. Es Jeruk | Rp 5.000");
+        System.out.println("99. Pesan dan Bayar");
+        System.out.println("0. Keluar Aplikasi");
+    }
 }
