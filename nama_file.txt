@@ -1,0 +1,2 @@
+Ini adalah contoh penulisan ke file teks.
+Baris kedua.

@@ -27,7 +27,7 @@ public class Main {
             if (pilihanMenu == 0) {
                 break;
             } else if (pilihanMenu == 99) {
-                System.out.println("Mengklik 99");
+                break;
             } else if (pilihanMenu < 1 || pilihanMenu > 5) {
                 System.out.println("Menu tidak valid.");
                 continue;
@@ -74,21 +74,23 @@ public class Main {
 
             // memasukkan value yang ada di variabel menu, jumlahPorsi kedalam list untuk ditampilkan
             menuList.add(menu);
-            System.out.println("menuList:" + menuList);
             jumlahList.add(jumlahPorsi);
-            System.out.println("jumlah list: " + jumlahList);
             hargaList.add(totalHarga);
-            System.out.println("totalHarga :" + hargaList);
         }
 
         // Menampilkan pesanan
-        System.out.println("Pesanan Anda:");
+        System.out.println("============================");
+        System.out.println("BINARFOOD");
+        System.out.println("=============================\n");
+        System.out.println("Terimakasih karna sudah memesan di BinarFood");
+        System.out.println("Di bawah ini adalah pesanan anda:");
         for (int i = 0; i < menuList.size(); i++) {
             System.out.println(menuList.get(i) + " - " + jumlahList.get(i) + " porsi - Total Harga: Rp " + hargaList.get(i));
             totalHarga += hargaList.get(i);
         }
 
         System.out.println("Total Harga Keseluruhan: Rp " + totalHarga);
+        System.out.println("Pembayaran : Binarcash ");
 
         scanner.close();
     }
