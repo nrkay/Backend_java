@@ -1,0 +1,12 @@
+
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø¦Â×8ÃŒ¢¦²1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôØ«Èşÿÿÿÿ8ÄŒ¢¦²1
+r	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼”Šûÿÿÿÿ8ÄŒ¢¦²1
+K
+java:S2115")Add password protection to this database.(İ›ÿÿÿÿÿ8ÈŒ¢¦²1
+s
+java:S3457 "Q%n should be used in place of \n to produce the platform-specific line separator.(‘¨›ãıÿÿÿÿ8ÉŒ¢¦²1
+P
+java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8œà¦²1
+O
+java:S1128"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ8œà¦²1

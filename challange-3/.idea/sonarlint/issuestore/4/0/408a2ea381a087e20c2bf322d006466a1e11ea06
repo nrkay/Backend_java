@@ -1,0 +1,11 @@
+
+W
+java:S1118":Add a private constructor to hide the implicit public one.(ÇšÇ‹8¾¸°¬²1
+]
+java:S1854"@Remove this useless assignment to local variable "loginService".(òÂ™™8À¸°¬²1
+U
+java:S1854"8Remove this useless assignment to local variable "user".(Ç­‚û8À¸°¬²1
+F
+java:S1481")Remove this unused "user" local variable.(Ç­‚û8À¸°¬²1
+N
+java:S1481"1Remove this unused "loginService" local variable.(òÂ™™8Á¸°¬²1

@@ -1,0 +1,36 @@
+
+n
+java:S1104"QMake users a static final constant or non-public and provide accessors if needed.(ÒïŠí8Õ­ê¬²1
+q
+java:S1104	"TMake merchant a static final constant or non-public and provide accessors if needed.(Íì¯¬8Ö­ê¬²1
+q
+java:S1104
+"TMake products a static final constant or non-public and provide accessors if needed.(ÒÁù8Ö­ê¬²1
+u
+java:S1104"XMake orderDetails a static final constant or non-public and provide accessors if needed.(éÜöñ8Ö­ê¬²1
+n
+java:S1104"RMake orders a static final constant or non-public and provide accessors if needed.(Üå¾8Ö­ê¬²1
+H
+java:S1444"+Make this "public static users" field final(ÒïŠí8Ö­ê¬²1
+K
+java:S1444	".Make this "public static merchant" field final(Íì¯¬8Ö­ê¬²1
+K
+java:S1444
+".Make this "public static products" field final(ÒÁù8Ö­ê¬²1
+O
+java:S1444"2Make this "public static orderDetails" field final(éÜöñ8Ö­ê¬²1
+H
+java:S1444",Make this "public static orders" field final(Üå¾8Ö­ê¬²1
+:
+java:S2386"Make this member "protected".(ÒïŠí8×­ê¬²1
+:
+java:S2386	"Make this member "protected".(Íì¯¬8×­ê¬²1
+:
+java:S2386
+"Make this member "protected".(ÒÁù8×­ê¬²1
+:
+java:S2386"Make this member "protected".(éÜöñ8×­ê¬²1
+9
+java:S2386"Make this member "protected".(Üå¾8×­ê¬²1
+W
+java:S1118":Add a private constructor to hide the implicit public one.(Ú¦Ì‰8×­ê¬²1
