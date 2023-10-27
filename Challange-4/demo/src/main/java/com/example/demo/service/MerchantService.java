@@ -38,6 +38,10 @@ public class MerchantService {
         }
     }
 
+    //public List<Merchant> getOpenMerchant(){
+//        return merchantRepository.getOpenMerchant();
+//    }
+
     public void editMerchant(String name, boolean isOpen){
         merchantRepository.editMerchant(name, isOpen);
     }

@@ -38,21 +38,21 @@ public class MerchantController {
                 //View All Merchant
                 findAllMerchant();
             } else if (selectOption == 3) {
-                System.out.println("3. View All Product in specific Merchant");
+                //open merchant
+                getOpenMerchant();
             } else if (selectOption == 4) {
                 //edit Merchant
                 editMerchant();
-            } else if (selectOption == 5) {
-                System.out.println("5. Delete Merchant");
-            } else if(selectOption == 6){
-                System.out.println("bingung");
-            }
-            else{
+            } else{
                 ErrorView.orderNotFound();
             }
         } catch (InputMismatchException e){
             ErrorView.orderNotFound();
         }
+    }
+
+    private void getOpenMerchant() {
+        //List<Merchant> openMerchantList =
     }
 
     private void editMerchant() {
@@ -68,7 +68,6 @@ public class MerchantController {
             isOpen=true;
         }
         merchantService.editMerchant(name, isOpen);
-
     }
 
     private void findAllMerchant(){

@@ -31,6 +31,7 @@ public class OrderController {
     @Autowired
     OrderDetailService orderDetailService;
 
+
     CustomerOrder order = new CustomerOrder();
     UUID idUsername;
 
@@ -78,13 +79,15 @@ public class OrderController {
         Scanner scanner = new Scanner(System.in);
         System.out.print("order_id => ");
         UUID orderId = UUID.fromString(scanner.next());
-//        List<OrderDetail> orderDetails = orderDetailService.getAllOrderProduct(orderId);
-//        for (OrderDetail d:orderDetails){
-//            System.out.println(d.getProduct());
-        //}
-        //menampilkan total harga
-//        orderDetailService.getTotalPrice(orderId);
-        //mengubah
+        List<OrderDetail> orderDetails = orderDetailService.getAllOrderProduct(orderId);
+        for (OrderDetail d:orderDetails){
+            System.out.println(d.getProduct());
+        }
+
+       //mnampilkan total harga
+        orderDetailService.getTotalPrice(orderId);
+       //mengubah status order
+        orderService.updateStatus(orderId);
     }
 
     private void menuOrder() {
@@ -95,17 +98,20 @@ public class OrderController {
         Product product1 = orderService.getProduct(nameProduct);
         //set product
         orderDetail.setProduct(product1);
-        //set customer_id
-        CustomerUser customerUser = userService.findUserById(idUsername);
-        //orderDetail.setCustomerUser(customerUser);
 
         System.out.print("qty => ");
         int qty = scan.nextInt();
         int totalPrice = (int) (qty * product1.getPrice());
         orderDetail.setTotalPrice(totalPrice);
         orderDetail.setQuantity(qty);
+
+        System.out.print("order_id => ");
+        UUID orderId = UUID.fromString(scan.next());
+        CustomerOrder customerOrder = orderService.findOrderById(orderId);
+        orderDetail.setCustomerOrder(customerOrder);
         orderDetailService.create(orderDetail);
         orderMenu();
+
     }
 
 }

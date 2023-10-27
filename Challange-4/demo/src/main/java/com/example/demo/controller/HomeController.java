@@ -23,10 +23,17 @@ public class HomeController {
 
     @Autowired
     UserController userController;
+    private boolean exit = false;
+
+    public void setExis(boolean exit){
+        this.exit = exit;
+    }
     public void home(){
-        HomeMenu.welcomeMessage();
-        HomeMenu.mainMenuOption();
-        selectMainMenu();
+        while (!exit){
+            HomeMenu.welcomeMessage();
+            HomeMenu.mainMenuOption();
+            selectMainMenu();
+        }
     }
 
     public void selectMainMenu(){

@@ -29,4 +29,15 @@ public class Merchant {
     // mappedBy diisi field yang merujuk ke Merchant di Product
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "merchant")
     private List<Product> productList;
+
+//    @Override
+//    public String toString() {
+//        return "Merchant{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", location='" + location + '\'' +
+//                ", open=" + open +
+//                ", productList=" + productList +
+//                '}';
+//    }
 }

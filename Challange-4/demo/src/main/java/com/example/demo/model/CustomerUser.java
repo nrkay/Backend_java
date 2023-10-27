@@ -28,4 +28,5 @@ public class CustomerUser {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<CustomerOrder> orderList;
 
+
 }

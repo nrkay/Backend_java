@@ -27,4 +27,5 @@ public class CustomerOrder {
     @JoinColumn(name = "user_id")
     private CustomerUser user;
 
+
 }

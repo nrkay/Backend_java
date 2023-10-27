@@ -27,4 +27,14 @@ public class Product {
     //column name in product table
     @JoinColumn(name = "merhant_id")
     private Merchant merchant;
+
+//    @Override
+//    public String toString() {
+//        return "Product{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", price=" + price +
+//                ", merchant=" + merchant +
+//                '}';
+//    }
 }

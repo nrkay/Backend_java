@@ -37,17 +37,14 @@ public class ProductController {
                 addNewProduct();
             } else if (selectOption == 2) {
                 //View All Merchant
-                System.out.println("view all product");
                 viewOpenProductMerchat();
             } else if (selectOption == 3) {
-                System.out.println("3. View All Product in specific Merchant");
+                //editmerchant
             } else if (selectOption == 4) {
                 //delete product
                 deleteProduct();
-            } else if (selectOption == 5) {
-                System.out.println("ga tau ah");
             } else if(selectOption == 6){
-                System.out.println("bingung ah pengen beli truk");
+                System.out.println("Menu tidak tersedia");
             }
             else{
                 ErrorView.orderNotFound();
@@ -72,7 +69,7 @@ public class ProductController {
         Merchant merchant = merchantService.findMerchantById(merchantId);
         product.setMerchant(merchant);
         productService.create(product);
-        index();
+
 
     }
 
@@ -82,11 +79,10 @@ public class ProductController {
         System.out.print("Name Product => ");
         String nameProduct = scanner.nextLine();
         productService.deleteProduct(nameProduct);
-        index();
+
     }
 
     private void viewOpenProductMerchat(){
         productView.viewOpenProductMerchant();
-        index();
     }
 }

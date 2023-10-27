@@ -48,7 +48,7 @@ public class UserController {
         System.out.print("Username   => ");
         String username = scanner.nextLine();
         userService.deleteUser(username);
-        index();
+
     }
 
     private void addUser() {
@@ -65,6 +65,6 @@ public class UserController {
         String password = scan.nextLine();
         customerUser.setPasssword(password);
         userService.create(customerUser);
-        index();
+
     }
 }

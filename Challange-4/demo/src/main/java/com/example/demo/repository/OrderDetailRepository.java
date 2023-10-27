@@ -12,11 +12,11 @@ import java.util.UUID;
 
 @Repository
 public interface OrderDetailRepository extends JpaRepository<OrderDetail, UUID> {
-//    @Query("SELECT od FROM OrderDetail od WHERE od.customerUser.id = :orderId")
-//    List<OrderDetail> findByOrderId(@Param("orderId") UUID orderId);
-//
-//    @Query("SELECT SUM(od.totalPrice) FROM OrderDetail od WHERE od.customerUser.id = :orderId")
-//    Long calculateTotalPriceByOrderId(@Param("orderId") UUID orderId);
+        @Query("SELECT od FROM OrderDetail od WHERE od.customerOrder.id= :orderId")
+        List<OrderDetail> findByOrderId(@Param("orderId") UUID orderId);
+
+    @Query("SELECT SUM(od.totalPrice) FROM OrderDetail od WHERE od.customerOrder.id = :orderId")
+    Long calculateTotalPriceByOrderId(@Param("orderId") UUID orderId);
 
 
 }

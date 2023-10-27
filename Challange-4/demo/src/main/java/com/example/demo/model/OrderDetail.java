@@ -29,4 +29,15 @@ public class OrderDetail {
     Product product;
     private int quantity;
     private long totalPrice;
+
+//    @Override
+//    public String toString() {
+//        return "OrderDetail{" +
+//                "id=" + id +
+//                ", customerOrder=" + customerOrder +
+//                ", product=" + product +
+//                ", quantity=" + quantity +
+//                ", totalPrice=" + totalPrice +
+//                '}';
+//    }
 }
