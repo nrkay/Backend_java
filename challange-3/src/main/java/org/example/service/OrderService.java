@@ -18,10 +18,8 @@ public class OrderService {
         Order order = new Order();
         System.out.println("Masukkan Alamat Anda : ");
         String address = scanner.next();
-
-        System.out.println(user.getId());
+        scanner.nextLine();
         for (User item: Data.users){
-            System.out.println("ini id nya " + item.getId());
             user_id = item.getId();
         }
 
@@ -29,7 +27,6 @@ public class OrderService {
                 "jdbc:mysql://127.0.0.1:3306/synrg3", "root", "");
              Statement statement = conn.createStatement()) {
             int row = statement.executeUpdate(generateInsert(address, user_id));
-            System.out.println("setelah diubah " + user_id);
             order.setUser_id(user_id);
             order.setDestination_address(address);
             Data.orders.add(order);

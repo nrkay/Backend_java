@@ -1,3 +1,11 @@
 
-d
-java:S2094"BRemove this empty class, write its code or make it an "interface".(ÿÀ¾€ıÿÿÿÿ8Á¶ˆ«²1
+l	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çàŒ@8‡ÿÆÎ²1
+l	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çàŒ@8‡ÿÆÎ²1
+N
+java:S1481",Remove this unused "scanner" local variable.(ù ƒ‘üÿÿÿÿ8ÿÆÎ²1
+F
+java:S2115")Add password protection to this database.(å¸ıÚ8ÿÆÎ²1
+E
+java:S1481"(Remove this unused "row" local variable.(ÅŸ„†8‘ÿÆÎ²1
+s
+java:S3457!"Q%n should be used in place of \n to produce the platform-specific line separator.(‘¨›ãıÿÿÿÿ8’ÿÆÎ²1

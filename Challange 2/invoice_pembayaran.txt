@@ -1,11 +1,13 @@
 Terima kasih sudah memesan di BinarFud
 Dibawah ini adalah pesanan anda
 Nasi Goreng   2    30000
-Nasi + Ayam   1    18000
-Es Jeruk   1    5000
+Es Jeruk   4    20000
+Es Jeruk   4    20000
+Mie Goreng   1    13000
+Nasi + Ayam   2    36000
 -----------------------------------------+
-Total Pesanan : 4
-Total Harga   : 53000
+Total Pesanan : 13
+Total Harga   : 119000
 
 
 Pembayaran : Binar Cash

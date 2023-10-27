@@ -1,15 +1,17 @@
 
-m	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ÄÖö8Üîÿ¬²1
-m	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ÄÖö8Üîÿ¬²1
-n	java:S116"RRename this field "user_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­Âù„8æîÿ¬²1
+m	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ÄÖö8´Á¾²1
+m	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»ÄÖö8‹¡û¾²1
+s	java:S116"RRename this field "user_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šÖïéÿÿÿÿÿ8Ö‚ü¾²1
 F
-java:S2115")Add password protection to this database.(å¸ıÚ8êîÿ¬²1
+java:S1481")Remove this unused "user" local variable.(Ç­‚û8ŠüçÍ²1
+F
+java:S2115")Add password protection to this database.(å¸ıÚ8¯´Á¾²1
 E
-java:S1481 "(Remove this unused "row" local variable.(ÅŸ„†8êîÿ¬²1
+java:S1481"(Remove this unused "row" local variable.(ÅŸ„†8±´Á¾²1
 s
-java:S3457'"Q%n should be used in place of \n to produce the platform-specific line separator.(‘¨›ãıÿÿÿÿ8ëîÿ¬²1
+java:S3457#"Q%n should be used in place of \n to produce the platform-specific line separator.(‘¨›ãıÿÿÿÿ8²´Á¾²1
 Y
-java:S1128"7Remove this unused import 'org.example.utils.Constant'.(Ÿ½ºøÿÿÿÿ8ëîÿ¬²1
+java:S1128"7Remove this unused import 'org.example.utils.Constant'.(Ÿ½ºøÿÿÿÿ8£—Ï¾²1
 O
 java:S1128
-"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ8ìîÿ¬²1
+"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ8¥—Ï¾²1

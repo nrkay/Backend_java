@@ -8,7 +8,7 @@ import java.sql.*;
 public class userTable {
     public static void main() {
         System.out.println("Mysqk JDBC Connection Testing");
-        String SQL_SELECT = "Select * from User";
+        String SQL_SELECT = "Select * from Product";
         try (Connection conn = DriverManager.getConnection(
                 "jdbc:mysql://127.0.0.1:3306/synrg3", "root", "");
              PreparedStatement preparedStatement = conn.prepareStatement(SQL_SELECT)){

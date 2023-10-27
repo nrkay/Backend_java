@@ -12,7 +12,8 @@ public class LoginService {
     public User main(){
         User users = new User();
         System.out.println(Constant.LINE);
-        System.out.println("Login Page");
+        System.out.println(Constant.TAB2 + Constant.TAB2 + "Login Page");
+        System.out.println(Constant.LINE);
         System.out.println("Masukkan Username : ");
         String username = scanner.next();
         scanner.nextLine();

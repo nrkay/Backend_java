@@ -1,5 +1,4 @@
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,8 +9,8 @@ import java.util.Scanner;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     static Scanner scanner = new Scanner(System.in);
-    static List<Menu> listMenu = new ArrayList<Menu>();
-    static List<Pesanan> listPesanan = new ArrayList<Pesanan>();
+    static List<Menu> listMenu = new ArrayList<>();
+    static List<Pesanan> listPesanan = new ArrayList<>();
     static String line = "=======================================================";
     static boolean isBreak = false;
 
@@ -40,11 +39,11 @@ public class Main {
             if (index != -1){
                     for (Menu item:listMenu){
                        if (index+1 == item.getId()){
-                           orderTrue(item.getId(), item.getFood(), item.getPrice());
+                           orderTrue(item.getFood(), item.getPrice());
                        }
                     }
             } else if (inputMenu == 99) {
-                if (listPesanan.size() < 1){
+                if (listPesanan.isEmpty()){
                     System.out.println("Tidak ada pesanan yang tercatat\nsilahkan pesan terlebih dahulu \n");
                 } else {
                     konfirmasiPembayaran();
@@ -83,7 +82,7 @@ public class Main {
         listMenu.add(new Menu(4, "Es Teh Manis", 3000));
         listMenu.add(new Menu(5, "Es Jeruk", 5000));
     }
-    public static void orderTrue(int id, String nameFood, int price) {
+    public static void orderTrue(String nameFood, int price) {
 
         System.out.println(line);
         System.out.println("Berapa Pesanan Anda");
@@ -112,7 +111,7 @@ public class Main {
             totalHarga += item.getHarga();
         }
         System.out.println("------------------------------------------------------");
-        System.out.println("Total Pesanan : " + totalPesanan);
+        System.out.println("Jumlah Pesanan : " + totalPesanan);
         System.out.println("Total Harga   : " + totalHarga + "\n");
         System.out.println("1. Konfirmasi dan Pembayaran");
         System.out.println("2. Kembali ke Menu Utama");
@@ -130,14 +129,6 @@ public class Main {
     }
 
     public static void cetakInvoice(){
-        /* System.out.println(line);
-        System.out.println("BinarFud");
-        System.out.println(line + "\n");
-        System.out.println("Terimakasih sudah memesan di BinarFud");
-        System.out.println("Di bawah ini adalah pesanan anda \n");
-        for (Pesanan item:listPesanan){
-            System.out.println(item.getMenuPesanan() + " | " + item.getQty() + " | " + item.getHarga());
-        } */
         String filePath = "invoice_pembayaran.txt";
         String textOpenInvoice = "Terima kasih sudah memesan di BinarFud\nDibawah ini adalah pesanan anda";
         String textCloseInvoide = "\nPembayaran : Binar Cash\n" + line + "\n" + "Simpan struk ini sebagai bukti pembayaran" + "\n" + line;
@@ -162,7 +153,7 @@ public class Main {
             System.out.println("-----------------------------------------+\n");
             bufferedWriter.write("Total Pesanan : " + totalPesanan);
             bufferedWriter.newLine();
-            bufferedWriter.write("Total Harga   : " + totalHarga);
+            bufferedWriter.write("Total: " + totalHarga);
             bufferedWriter.newLine();
             bufferedWriter.newLine();
             System.out.println("Total Pesanan : " + totalPesanan);
@@ -173,7 +164,6 @@ public class Main {
             isBreak = true;
         } catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException(e);
         }
 
 

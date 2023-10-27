@@ -27,7 +27,6 @@ public class GeneralView {
         for (Product item: Data.products){
             System.out.println(item.getId() + " | " + item.getProduct_name() + " | " + item.getPrice() + " | " + item.getMerchant_name());
         }
-        System.out.println("97. Lihat List Restaurant");
         System.out.println("98. Lihat List Orderan Anda");
         System.out.println("99. Pesan dan Bayar");
         System.out.println("0. Keluar Aplikasi\n");
