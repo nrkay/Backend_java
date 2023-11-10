@@ -46,11 +46,15 @@ public class CustomerUserController {
     @PostMapping
     public ResponseEntity<ResponData<UserResponseDto>> create(@RequestBody CustomerUser customerUser){
         UserResponseDto userResponseDto = customerUserService.save(customerUser);
-        ResponData<UserResponseDto> bodyRespon = new ResponData<>();
-        bodyRespon.setStatus("Success");
-        bodyRespon.setMessage("Add data is Success");
-        bodyRespon.setData(userResponseDto);
-        return ResponseEntity.ok(bodyRespon);
+       if (Objects.nonNull(userResponseDto)){
+           ResponData<UserResponseDto> bodyRespon = new ResponData<>();
+           bodyRespon.setStatus("Success");
+           bodyRespon.setMessage("Add data is Success");
+           bodyRespon.setData(userResponseDto);
+           return ResponseEntity.ok(bodyRespon);
+       } else {
+           throw new DataNotFound();
+       }
     }
 
     @DeleteMapping("/{id}")
@@ -74,31 +78,6 @@ public class CustomerUserController {
         }
     }
 
-    //Menampilkan detail order dari user yang melakukan
-    //order makanan.
-//    @GetMapping("getAllOrderByUserId/{id}")
-//    public ResponseEntity<ResponData<List<GetUserOrderResponse<List<OrderDetailResponse>>>>>
-//    getAllOrderByUserId(@PathVariable("id") UUID id){
-//        ResponData<List<GetUserOrderResponse<List<OrderDetailResponse>>>> bodyRespon = new ResponData<>();
-//        List<GetUserOrderResponse<List<OrderDetailResponse>>> respon = customerUserService.getAllOrderByIdUser(id);
-////        if (Objects.nonNull(respon)){
-////            bodyRespon.setStatus("Success");
-////            bodyRespon.setMessage("Get Data Success");
-////            bodyRespon.setData(respon);
-////            return ResponseEntity.ok(bodyRespon);
-////        } else {
-////            throw new DataNotFound();
-////        }
-//        if (respon.isEmpty()){
-//            throw new DataNotFound();
-//        } else {
-//            bodyRespon.setStatus("Success");
-//            bodyRespon.setMessage("Get Data Success");
-//            bodyRespon.setData(respon);
-//            return ResponseEntity.ok(bodyRespon);
-//
-//        }
-//    }
     @GetMapping("getAllOrderByUserId/{id}")
     public ResponseEntity<ResponData<List<GetUserOrderResponse<List<OrderDetailResponse>>>>> getAllOrderByUser(@PathVariable("id") UUID idUser){
         List<GetUserOrderResponse<List<OrderDetailResponse>>> respon = customerUserService.getAllOrderByIdUser(idUser);

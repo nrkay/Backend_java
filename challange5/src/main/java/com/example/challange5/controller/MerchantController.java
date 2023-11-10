@@ -93,16 +93,6 @@ public class MerchantController {
         }
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<Merchant> update(@PathVariable("id") UUID id, @RequestBody Merchant merchant) {
-//        Merchant updatedMerchant = merchantService.updateMerchant(id, merchant);
-//
-//        if (updatedMerchant != null) {
-//            return ResponseEntity.ok(updatedMerchant);
-//        } else {
-//            return ResponseEntity.notFound().build(); // Atau Anda dapat melempar exception untuk menunjukkan bahwa merchant dengan ID yang diberikan tidak ditemukan.
-//        }
-//    }
     @PutMapping("/{id}")
     public ResponseEntity<ResponData<MerchantResponse>> update(@PathVariable("id") UUID id, @RequestBody Merchant merchant) {
         MerchantResponse updatedMerchant = merchantService.updateMerchant(id, merchant);
