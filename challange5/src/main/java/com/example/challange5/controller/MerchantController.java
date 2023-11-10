@@ -113,7 +113,8 @@ public class MerchantController {
             log.info("ini dari controller edit succes : {}", updatedMerchant);
             return ResponseEntity.ok(merchantResponseResponData);
         } else {
-            merchantResponseResponData.setStatus("Data not found");
+            merchantResponseResponData.setStatus("Failed");
+            merchantResponseResponData.setMessage("Data not Found");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(merchantResponseResponData);
         }
     }

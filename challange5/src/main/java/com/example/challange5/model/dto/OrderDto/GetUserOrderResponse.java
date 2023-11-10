@@ -16,5 +16,5 @@ public class GetUserOrderResponse<T> {
     private String username;
     private UUID idOrder;
     private Long totalPrice;
-    private T data;
+    private T orderDetail;
 }

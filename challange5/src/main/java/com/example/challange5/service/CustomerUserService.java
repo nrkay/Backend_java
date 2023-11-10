@@ -14,10 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -44,11 +42,9 @@ public class CustomerUserService {
                 log.info("user is found : {}", respon.get());
                 return modelMapper.map(respon.get(), UserResponseDto.class);
             } else {
-                log.info("data was deleted");
                 throw new DataNotFound();
             }
         } else {
-            log.info("data not found");
             throw new DataNotFound();
         }
     }
@@ -56,8 +52,6 @@ public class CustomerUserService {
     public UserResponseDto save(CustomerUser customerUser){
         CustomerUser user = customerUserRepository.save(customerUser);
         return modelMapper.map(user, UserResponseDto.class);
-//        UserResponseDto response = modelMapper.map(user, UserResponseDto.class);
-//        return response;
     }
 
     public CustomerUser remove(UUID id){
@@ -96,50 +90,48 @@ public class CustomerUserService {
         }
     }
 
-    //Menampilkan detail order dari user yang melakukan
-    //order makanan.
-//    public List<GetUserOrderResponse<List<OrderDetailResponse>>> getAllOrderByIdUser(UUID id){
-//        //cek user ada add product ke detailOrder
-//        List<OrderDetail> orders = orderDetailRepository.findByCustomerOrder_Id(id);
-//        List<UserOrderResponse> response = customerUserRepository.findAllOrdersbyUserId(id);
-//        if (response.isEmpty()){
-////            //konversi dto UserOrderResponse ke
-////            GetUserOrderResponse getUserOrderResponse = modelMapper.map(response, GetUserOrderResponse.class);
-////            // cek apakah user ada add order detail
-////            if (orders.isEmpty()){
-////                getUserOrderResponse.setData(null);
-////            } else {
-////                //konversi dto OrderDetail ke Order Detail Response menggunakan
-////                //modelmap dan stream
-////                List<OrderDetailResponse> orderDetailResponses = orders.stream()
-////                        .map(OrderDetail -> modelMapper.map(OrderDetail, OrderDetailResponse.class))
-////                        .collect(Collectors.toList());
-////                //setData
-////                getUserOrderResponse.setData(orderDetailResponses);
-////            }
-////            log.info("dapat alhamdulillah {}, {}", response.getUsername(), response.getIdOrder());
-////            return getUserOrderResponse;
-//            log.info("wkwk ga dapat");
-//            throw new DataNotFound();
-//        }
-//        else {
-//            //konversi isi List UserOrderResponse menjadi GetUserOrderResponse
-//            List<GetUserOrderResponse<List<OrderDetailResponse>>> getUserOrderResponses = response.stream()
-//                      .map(UserOrderResponse -> modelMapper.map(UserOrderResponse, GetUserOrderResponse.class))
-//                       .collect(Collectors.toList());
-//
-//            //konversi dto OrderDetail ke Order Detail Response menggunakan
-//            //modelmap dan stream
-//              List<OrderDetailResponse> orderDetailResponses = orders.stream()
-//                        .map(OrderDetail -> modelMapper.map(OrderDetail, OrderDetailResponse.class))
-//                        .collect(Collectors.toList());
-//            if (orders.isEmpty()){
-//                //mengisisi setData di GetUserOrderResponse menjadi null
-//                getUserOrderResponses.forEach(data -> data.setData(null));
-//            } else {
-//                getUserOrderResponses.forEach(data -> data.setData(orderDetailResponses));
-//            }
-//            return getUserOrderResponses;
-//        }
-//    }
+
+    public List<GetUserOrderResponse<List<OrderDetailResponse>>> getAllOrderByIdUser(UUID idUser) {
+        List<UserOrderResponse> responses = customerUserRepository.findAllOrdersbyUserId(idUser);
+
+        if (responses.isEmpty()) {
+            throw new DataNotFound();
+        } else {
+            // Kustom mapping dari UserOrderResponse ke GetUserOrderResponse
+            List<GetUserOrderResponse<List<OrderDetailResponse>>> orderDetails = responses.stream()
+                    .map(userOrderResponse -> {
+                        //mengubah  List<UserOrderResponse> menjadi  List<GetUserOrderResponse>
+                        GetUserOrderResponse<List<OrderDetailResponse>> userOrderResponseList = modelMapper.map(userOrderResponse, GetUserOrderResponse.class);
+
+                        // Ambil order details berdasarkan userOrderId
+                        List<OrderDetail> orders = orderDetailRepository.findByCustomerOrder_Id(userOrderResponse.getIdOrder());
+
+                        // Konversi OrderDetail ke OrderDetailResponse
+                        List<OrderDetailResponse> orderDetailResponses = orders.stream()
+                                .map(orderDetail -> modelMapper.map(orderDetail, OrderDetailResponse.class))
+                                .collect(Collectors.toList());
+
+                        // Set data di GetUserOrderResponse
+                        userOrderResponseList.setOrderDetail(orderDetailResponses);
+
+                        return userOrderResponseList;
+                    })
+                    .collect(Collectors.toList());
+
+            return orderDetails;
+        }
+    }
+
 }
+//            List<GetUserOrderResponse<List<OrderDetailResponse>>> orderDetail = responConvert.stream()
+//                    .map(data -> {
+//                        List<OrderDetail> orderDetails = orderDetailRepository.findByCustomerOrder_Id(data.getId());
+//                        // Lakukan konversi orderDetails ke OrderDetailResponse jika diperlukan
+//                        List<OrderDetailResponse> orderDetailResponses = convertToOrderDetailResponseList(orderDetails);
+//
+//                        // Set data di GetUserOrderResponse
+//                        data.setData(orderDetailResponses);
+//
+//                        return data;
+//                    })
+//                    .collect(Collectors.toList());

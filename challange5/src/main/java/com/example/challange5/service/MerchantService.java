@@ -35,7 +35,6 @@ public class MerchantService {
     @Autowired
     private CustomerOrderRepository customerOrderRepository;
 
-
     public MerchantResponse findById(UUID id){
         Optional<Merchant> response = merchantRepository.findById(id);
         if (response.isPresent()){
@@ -86,22 +85,6 @@ public class MerchantService {
 
     }
 
-//    public Merchant updateMerchant(UUID id, Merchant merchant) {
-//        Optional<Merchant> merchantOptional = merchantRepository.findById(id);
-//        if (merchantOptional.isPresent()) {
-//            Merchant existingMerchant = merchantOptional.get();
-//            existingMerchant.setName_merchant(merchant.getName_merchant());
-//            existingMerchant.setLocation(merchant.getLocation());
-//            existingMerchant.setOpen(merchant.getOpen());
-//            log.info("update merchant existingMerchant : {}", existingMerchant);
-//            Merchant merchantUpdate = merchantRepository.save(existingMerchant);
-//            log.info("update merchant : {}", merchantUpdate.getName_merchant());
-//            return merchantUpdate;
-//        } else {
-//            return null; // Atau Anda dapat melempar exception untuk menunjukkan bahwa merchant dengan ID yang diberikan tidak ditemukan.
-//        }
-//    }
-
     public MerchantResponse updateMerchant(UUID id, Merchant merchant) {
         Optional<Merchant> merchantOptional = merchantRepository.findById(id);
         if (merchantOptional.isPresent()) {
@@ -121,33 +104,6 @@ public class MerchantService {
             return null;
         }
     }
-
-    //algortima:
-    //cari dulu order dengan status completed true dimana memiliki hubungan dengan merchat a
-    //kalau uda dapat, berati dalam bentuk List, Hitung semua total pendapatan dihari itu
-
-//    private void dailyReport(UUID id){
-//        //mencari order yang sudah berhasil chackout(complated = true)
-//        List<CustomerOrder> orderIsTrue = customerOrderRepository.findByCompletedTrue();
-//        if (orderIsTrue.isEmpty()){
-//            //kalau kosong kenapa
-//        } else {
-//
-//            if ()
-//        }
-//    }
-
-//    public List<ReportDayMerchantResponse> dailyReport(UUID id, LocalDate completed_at){
-//        List<ReportDayMerchantResponse> response = merchantRepository.findReportsDaily(id, completed_at);
-//        if (response.isEmpty()){
-//            log.info("WOE KOSONG INI, ETDAH");
-//            return null;
-//        } else {
-//            log.info("berhasil");
-//            return response;
-//        }
-//    }
-
     public ResponData<ResponReportsDaily<List<ReportDayMerchantResponse>>> dailyReport(UUID id, LocalDate completed_at){
         Optional<Merchant> getMerchant = merchantRepository.findById(id);
         ResponData<ResponReportsDaily<List<ReportDayMerchantResponse>>> bodyRespon = new ResponData<>();
@@ -185,7 +141,6 @@ public class MerchantService {
             return bodyRespon;
         }
     }
-
     public ResponData<ResponReportsCustome<List<ReportDayMerchantResponse>>> customeReport(UUID id, LocalDate startDate, LocalDate endDate){
         Optional<Merchant> getMerchant = merchantRepository.findById(id);
         ResponData<ResponReportsCustome<List<ReportDayMerchantResponse>>> bodyRespon = new ResponData<>();
@@ -223,8 +178,4 @@ public class MerchantService {
             return bodyRespon;
         }
     }
-
-
-
-
 }

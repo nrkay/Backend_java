@@ -99,4 +99,19 @@ public class CustomerUserController {
 //
 //        }
 //    }
+    @GetMapping("getAllOrderByUserId/{id}")
+    public ResponseEntity<ResponData<List<GetUserOrderResponse<List<OrderDetailResponse>>>>> getAllOrderByUser(@PathVariable("id") UUID idUser){
+        List<GetUserOrderResponse<List<OrderDetailResponse>>> respon = customerUserService.getAllOrderByIdUser(idUser);
+        ResponData<List<GetUserOrderResponse<List<OrderDetailResponse>>>> bodyRespon = new ResponData<>();
+        if (respon.isEmpty()){
+            throw new DataNotFound();
+        } else {
+            bodyRespon.setStatus("Success");
+            bodyRespon.setStatus("Get Data Success");
+            bodyRespon.setData(respon);
+            return ResponseEntity.ok(bodyRespon);
+        }
+    }
+
+
 }
