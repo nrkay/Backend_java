@@ -24,11 +24,12 @@ public class CustomerOrder extends AuditModel {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private LocalDate orderTime;
-    private boolean completed;
+    private Boolean completed;
+    private Long totalPrice;
+    private LocalDate complated_at;
     private String location;
     @ManyToOne(targetEntity = CustomerUser.class)
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private CustomerUser user;
-
 }

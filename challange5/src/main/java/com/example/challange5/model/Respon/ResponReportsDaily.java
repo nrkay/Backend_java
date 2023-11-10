@@ -1,5 +1,4 @@
-package com.example.challange5.model.dto;
-
+package com.example.challange5.model.Respon;
 
 import lombok.*;
 
@@ -11,9 +10,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MerchantResponse {
+public class ResponReportsDaily<T> {
     private UUID id;
+    private LocalDate date;
     private String name_merchant;
-    private String location;
-    private Boolean open;
+    private Long totalIncome;
+    private T listOrder;
 }

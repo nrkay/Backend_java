@@ -31,6 +31,4 @@ public class Merchant extends AuditModel {
     private Boolean open;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "merchant")
     private List<Product> productList;
-
-
 }

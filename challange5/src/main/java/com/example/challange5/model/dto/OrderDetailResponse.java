@@ -1,9 +1,7 @@
 package com.example.challange5.model.dto;
 
-
 import lombok.*;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Setter
@@ -11,9 +9,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MerchantResponse {
+public class OrderDetailResponse {
     private UUID id;
-    private String name_merchant;
-    private String location;
-    private Boolean open;
+    private String productName;
+    private Integer quantity;
+    private Long totalPrice;
 }

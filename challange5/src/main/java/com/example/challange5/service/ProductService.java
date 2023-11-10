@@ -1,12 +1,16 @@
 package com.example.challange5.service;
 
 
+import com.example.challange5.exception.DataNotFound;
 import com.example.challange5.model.Merchant;
 import com.example.challange5.model.Product;
+import com.example.challange5.model.dto.MerchantResponse;
 import com.example.challange5.model.dto.ProductRequest;
+import com.example.challange5.model.dto.ProductResponse;
 import com.example.challange5.repository.MerchantRepository;
 import com.example.challange5.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +29,26 @@ public class ProductService {
     @Autowired
     private MerchantRepository merchantRepository;
 
-    public Product create(UUID id, Product product){
+    @Autowired
+    private ModelMapper modelMapper;
+
+//    public Product create(UUID id, Product product){
+//        Optional<Merchant> merchant = merchantRepository.findById(id);
+//        if (merchant.isPresent()){
+//            Merchant existingMerchant = merchant.get();
+//            Product productCreate = Product.builder()
+//                    .name(product.getName())
+//                    .price(product.getPrice())
+//                    .merchant(existingMerchant)
+//                    .build();
+//            log.info("ini productCreate : {}", productCreate);
+//            return  productRepository.save(productCreate);
+//        } else {
+//            return null;
+//        }
+//    }
+
+    public ProductResponse create(UUID id, Product product){
         Optional<Merchant> merchant = merchantRepository.findById(id);
         if (merchant.isPresent()){
             Merchant existingMerchant = merchant.get();
@@ -35,26 +58,46 @@ public class ProductService {
                     .merchant(existingMerchant)
                     .build();
             log.info("ini productCreate : {}", productCreate);
-            return  productRepository.save(productCreate);
+            //save data
+            productRepository.save(productCreate);
+            //konversi dto untuk return
+            ProductResponse productResponse = modelMapper.map(productCreate, ProductResponse.class);
+            productResponse.setMerchant(productCreate.getMerchant().getName_merchant());
+            return productResponse;
         } else {
             return null;
         }
     }
-    public Product update(UUID id, ProductRequest productRequest){
+    public ProductResponse update(UUID id){
         Optional<Product> productOptional = productRepository.findById(id);
         if (productOptional.isPresent()){
-            productOptional.get().setName(productRequest.getProductName());
-            productOptional.get().setPrice(productRequest.getProductPrice());
-
-            log.info("ini productUpdate : {}", productOptional);
-            return  productRepository.save(productOptional.get());
+            if (productOptional.get().getDeleted().equals(false)) {
+                log.info("ini productUpdate : {}", productOptional);
+                return modelMapper.map(productOptional.get(), ProductResponse.class);
+            } else {
+                throw new DataNotFound();
+            }
         } else {
             log.info("Update Product is null");
-            return null;
+            throw new DataNotFound();
         }
     }
 
-    public void remove(UUID id){
-         productRepository.deleteById(id);
+    public Product remove(UUID id){
+         Optional<Product> response = productRepository.findById(id);
+         if (response.isPresent()){
+             if (response.get().getDeleted().equals(false)){
+                 //delete product
+                 productRepository.deleteById(id);
+                 log.info("delete product is success {}", response.get());
+                 return response.get();
+             } else {
+                 log.info("error delete");
+                throw new DataNotFound();
+             }
+         } else {
+             log.info("error delete");
+             throw new DataNotFound();
+         }
     }
 }

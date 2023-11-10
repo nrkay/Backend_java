@@ -1,6 +1,5 @@
 package com.example.challange5.model.dto;
 
-
 import lombok.*;
 
 import java.time.LocalDate;
@@ -11,9 +10,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MerchantResponse {
-    private UUID id;
+public class ReportDayMerchantResponse{
     private String name_merchant;
+    private UUID id;
+    private LocalDate orderTime;
     private String location;
-    private Boolean open;
+    private Long totalPrice;
 }

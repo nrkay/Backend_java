@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -28,6 +29,8 @@ public class OrderDetailService {
 
     @Autowired
     private OrderDetailRepository orderDetailRepository;
+
+    //findOrderDetailByOrderId
 
     //create data
     public OrderDetail create(UUID idOrder, UUID idProduct, OrderDetail request) {
@@ -93,5 +96,7 @@ public class OrderDetailService {
             return null;
         }
     }
+
+
     }
 
