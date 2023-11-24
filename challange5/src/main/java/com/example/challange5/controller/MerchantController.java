@@ -75,10 +75,6 @@ public class MerchantController {
 
     }
 
-//    @DeleteMapping("/{id}")
-//    public void delete(@PathVariable("id") UUID id){
-//        merchantService.remove(id);
-//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, String>> delete(@PathVariable("id") UUID id){

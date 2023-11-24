@@ -2,12 +2,14 @@ package com.example.challange5.service;
 
 
 import com.example.challange5.exception.DataNotFound;
+import com.example.challange5.model.CustomerOrder;
 import com.example.challange5.model.CustomerUser;
 import com.example.challange5.model.OrderDetail;
 import com.example.challange5.model.dto.OrderDetailResponse;
 import com.example.challange5.model.dto.OrderDto.GetUserOrderResponse;
 import com.example.challange5.model.dto.OrderDto.UserOrderResponse;
 import com.example.challange5.model.dto.UserDto.UserResponseDto;
+import com.example.challange5.repository.CustomerOrderRepository;
 import com.example.challange5.repository.CustomerUserRepository;
 import com.example.challange5.repository.OrderDetailRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +34,11 @@ public class CustomerUserService {
     @Autowired
     private OrderDetailRepository orderDetailRepository;
 
+    @Autowired
+    private CustomerOrderRepository customerOrderRepository;
+
+
+
 
 
     //get user by id
@@ -48,6 +55,22 @@ public class CustomerUserService {
             throw new DataNotFound();
         }
     }
+    public CustomerUser getReal(UUID id){
+        Optional<CustomerUser> respon = customerUserRepository.findById(id);
+        if (respon.isPresent()){
+            if (respon.get().getDeleted().equals(false)){
+                log.info("user is found : {}", respon.get());
+                return respon.get();
+            } else {
+                throw new DataNotFound();
+            }
+        } else {
+            throw new DataNotFound();
+        }
+    }
+
+
+
 
     public UserResponseDto save(CustomerUser customerUser){
         CustomerUser user = customerUserRepository.save(customerUser);
@@ -93,7 +116,6 @@ public class CustomerUserService {
 
     public List<GetUserOrderResponse<List<OrderDetailResponse>>> getAllOrderByIdUser(UUID idUser) {
         List<UserOrderResponse> responses = customerUserRepository.findAllOrdersbyUserId(idUser);
-
         if (responses.isEmpty()) {
             throw new DataNotFound();
         } else {
@@ -123,15 +145,4 @@ public class CustomerUserService {
     }
 
 }
-//            List<GetUserOrderResponse<List<OrderDetailResponse>>> orderDetail = responConvert.stream()
-//                    .map(data -> {
-//                        List<OrderDetail> orderDetails = orderDetailRepository.findByCustomerOrder_Id(data.getId());
-//                        // Lakukan konversi orderDetails ke OrderDetailResponse jika diperlukan
-//                        List<OrderDetailResponse> orderDetailResponses = convertToOrderDetailResponseList(orderDetails);
 //
-//                        // Set data di GetUserOrderResponse
-//                        data.setData(orderDetailResponses);
-//
-//                        return data;
-//                    })
-//                    .collect(Collectors.toList());
