@@ -1,0 +1,40 @@
+#server.port=8082
+#spring.datasource.url=jdbc:postgresql://localhost:5432/merchant_service
+#spring.datasource.username=postgres
+#spring.datasource.password=Azizah018
+#
+#spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation= true
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+#
+#spring.jpa.hibernate.ddl-auto=update
+
+server:
+  port: 8082
+
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          studentClient:
+            url:  http://localhost:8222/api/v1/merchant
+  application:
+    name: merchant
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/merchant_service
+    username: postgres
+    password: Azizah018
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    eureka:
+      instance:
+        hostname: localhost
+      client:
+        service-url:
+          defaultZone: http://localhost:8761/eureka
+
+

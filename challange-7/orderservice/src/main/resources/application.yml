@@ -1,0 +1,31 @@
+#server.port=8083
+#spring.datasource.url=jdbc:postgresql://localhost:5432/order_service
+#spring.datasource.username=postgres
+#spring.datasource.password=Azizah018
+#
+#spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation= true
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+#
+#spring.jpa.hibernate.ddl-auto=update
+server:
+  port: 8083
+
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          studentClient:
+            url:  http://localhost:8222/api/v1/order
+  application:
+    name: order
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/order_service
+    username: postgres
+    password: Azizah018
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
