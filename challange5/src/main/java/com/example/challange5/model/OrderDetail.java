@@ -23,7 +23,6 @@ public class OrderDetail extends AuditModel{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
     @ManyToOne
     @JoinColumn(name = "order_id")
     @JsonIgnore
@@ -35,5 +34,4 @@ public class OrderDetail extends AuditModel{
     private Product product;
     private int quantity;
     private Long totalPrice;
-
 }

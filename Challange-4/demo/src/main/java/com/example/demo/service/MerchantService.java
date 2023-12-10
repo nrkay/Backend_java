@@ -45,4 +45,5 @@ public class MerchantService {
     public void editMerchant(String name, boolean isOpen){
         merchantRepository.editMerchant(name, isOpen);
     }
+
 }

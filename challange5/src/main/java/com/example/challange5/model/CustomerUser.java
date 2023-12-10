@@ -28,6 +28,4 @@ public class CustomerUser extends AuditModel{
     private String password;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<CustomerOrder> orderList;
-
-
 }

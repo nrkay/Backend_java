@@ -58,20 +58,16 @@ public class OrderrService {
         existData.setLocation(request.getLocation());
         return orderRepository.save(existData);
     }
-
     //delete data
     public void deleteOrder(UUID id){
         var dataExist = findById(id);
         orderRepository.delete(dataExist);
     }
-
     //getProduct
     public List<Product> getAllProduct(){
         return  productClient.listProduct();
     }
-
     //chackout order
-
     @Transactional
     public ChackOutResponse chackOut(UUID id){
         var existData = findById(id);
@@ -90,9 +86,4 @@ public class OrderrService {
         orderRepository.save(existData);
         return modelMapper.map(existData, ChackOutResponse.class);
     }
-
-
-
-
-
 }

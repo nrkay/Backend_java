@@ -19,7 +19,7 @@ import java.util.UUID;
 public interface MerchantRepository extends JpaRepository<Merchant, UUID> {
 
     @Procedure("editMerchant")
-    void editMerchant(@Param("merchant_name") String name, @Param("is_boolean") boolean isOpen);
+    void editMerchant(@Param("p_name_merchant") String name, @Param("p_open") boolean isOpen, @Param(p_location) String name, @Param(p_merchant_id) UUID id);
 
 //    @Modifying
 //    @Query("SELECT m FROM Merchant m WHERE m.open = true")
