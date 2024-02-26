@@ -8,6 +8,5 @@ public interface UserService {
 
     CustomerUser create(CustomerUser customerUser);
     void deleteUser(String username);
-
     CustomerUser findUserById(UUID userId);
 }
